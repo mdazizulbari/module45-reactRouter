@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../Header/Header";
+import Header from "./Header";
 import { Outlet } from "react-router";
-import Footer from "../Footer/Footer";
-import Sidebar from "../Footer/Sidebar";
+import Footer from "./Footer";
+import Sidebar from "./Sidebar";
 
 const Root = () => {
   return (

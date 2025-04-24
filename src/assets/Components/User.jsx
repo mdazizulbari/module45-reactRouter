@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 
 const User = ({ user }) => {
   const { name, email, phone, id } = user;
+  const [showInfo, setShowInfo] = useState(false);
 
   return (
     <div className="p-5 mt-4 rounded-2xl border-green-600 border">
@@ -12,6 +13,7 @@ const User = ({ user }) => {
       <Link className="px-3 py-1 rounded-full bg-green-200" to={`/users/${id}`}>
         Show Details
       </Link>
+      <button onClick={()=>setShowInfo(!showInfo)}>{showInfo ? "Hide" : "Show"} Info</button>
     </div>
   );
 };

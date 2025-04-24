@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router";
-import "../../App.css"
+import "../../App.css";
 
 const Header = () => {
   return (
@@ -12,6 +12,7 @@ const Header = () => {
         <NavLink to={"/laptops"}>Laptops</NavLink>
         <NavLink to={"/users"}>Users</NavLink>
         <NavLink to={"/users2"}>Users2</NavLink>
+        <NavLink to={"/posts"}>Posts</NavLink>
       </nav>
     </div>
   );

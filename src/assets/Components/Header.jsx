@@ -4,7 +4,7 @@ import "../../App.css"
 
 const Header = () => {
   return (
-    <div>
+    <div className="mt-20">
       <h4 className="text-center">This Header</h4>
       <nav className="flex gap-3">
         <NavLink to={"/"}>Home</NavLink>

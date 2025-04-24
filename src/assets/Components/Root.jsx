@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 
 const Root = () => {
   return (
-    <div className="flex items-center justify-center flex-col h-screen gap-5">
+    <div className="flex items-center flex-col h-screen gap-5">
       <Header></Header>
       <div className="flex gap-10">
         <Sidebar></Sidebar>

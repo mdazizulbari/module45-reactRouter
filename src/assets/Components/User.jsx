@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Link } from "react-router";
+import UserDetailsOnPage from "./UserDetailsOnPage";
 
 const User = ({ user }) => {
   const { name, email, phone, id } = user;
@@ -13,7 +14,14 @@ const User = ({ user }) => {
       <Link className="px-3 py-1 rounded-full bg-green-200" to={`/users/${id}`}>
         Show Details
       </Link>
-      <button onClick={()=>setShowInfo(!showInfo)}>{showInfo ? "Hide" : "Show"} Info</button>
+      <button onClick={() => setShowInfo(!showInfo)}>
+        {showInfo ? "Hide" : "Show"} Info
+      </button>
+      {showInfo && (
+        <Suspense fallback={<span>Loading...</span>}>
+          <UserDetailsOnPage></UserDetailsOnPage>
+        </Suspense>
+      )}
     </div>
   );
 };

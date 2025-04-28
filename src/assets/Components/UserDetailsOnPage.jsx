@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 
-const UserDetailsOnPage = () => {
+const UserDetailsOnPage = ({userPromise}) => {
+    const {name,  username} = use(userPromise)
+    console.log(userPromise)
     return (
-        <div>
-           <p>details</p> 
+        <div className='flex items-center justify-center'>
+           <p>User Name: {username}</p> 
         </div>
     );
 };

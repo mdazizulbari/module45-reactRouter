@@ -5,6 +5,9 @@ import UserDetailsOnPage from "./UserDetailsOnPage";
 const User = ({ user }) => {
   const { name, email, phone, id } = user;
   const [showInfo, setShowInfo] = useState(false);
+  const userPromise = fetch(
+    `https://jsonplaceholder.typicode.com/users/${id}`
+  ).then((response) => response.json());
 
   return (
     <div className="p-5 mt-4 rounded-2xl border-green-600 border">
@@ -19,7 +22,7 @@ const User = ({ user }) => {
       </button>
       {showInfo && (
         <Suspense fallback={<span>Loading...</span>}>
-          <UserDetailsOnPage></UserDetailsOnPage>
+          <UserDetailsOnPage userPromise={userPromise}></UserDetailsOnPage>
         </Suspense>
       )}
     </div>

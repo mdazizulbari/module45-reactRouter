@@ -1,13 +1,21 @@
 import React, { Suspense, useState } from "react";
-import { Link } from "react-router";
+import { Link, Navigate, useLocation } from "react-router";
 import UserDetailsOnPage from "./UserDetailsOnPage";
 
 const User = ({ user }) => {
   const { name, email, phone, id } = user;
   const [showInfo, setShowInfo] = useState(false);
+  const [visitHome, setVisitHome] = useState(false);
+  const location=useLocation()
+  console.log(location)
+  
   const userPromise = fetch(
     `https://jsonplaceholder.typicode.com/users/${id}`
   ).then((response) => response.json());
+
+  if(visitHome){
+    return <Navigate to="/"></Navigate>
+  }
 
   return (
     <div className="p-5 mt-4 rounded-2xl border-green-600 border">
@@ -17,7 +25,7 @@ const User = ({ user }) => {
       <Link className="px-3 py-1 rounded-full bg-green-200" to={`/users/${id}`}>
         Show Details
       </Link>
-      <button onClick={() => setShowInfo(!showInfo)}>
+      <button className="btn btn-success rounded-full" onClick={() => setShowInfo(!showInfo)}>
         {showInfo ? "Hide" : "Show"} Info
       </button>
       {showInfo && (
@@ -25,6 +33,7 @@ const User = ({ user }) => {
           <UserDetailsOnPage userPromise={userPromise}></UserDetailsOnPage>
         </Suspense>
       )}
+      <button className="btn btn-success rounded-full" onClick={() => setVisitHome(true)}>Visit Home</button>
     </div>
   );
 };
